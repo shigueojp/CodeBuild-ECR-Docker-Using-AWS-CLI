@@ -1,0 +1,37 @@
+{
+    "name": "samples-docker-project",
+    "description": "",
+    "source": {
+        "type": "S3",
+        "location": "sj-docker-push-639733269501/source.zip"
+    },
+    "artifacts": {
+        "type": "NO_ARTIFACTS"
+    },
+    "environment": {
+        "type": "LINUX_CONTAINER",
+        "image": "aws/codebuild/standard:4.0",
+        "computeType": "BUILD_GENERAL1_LARGE",
+        "environmentVariables": [
+            {
+                "name": "AWS_DEFAULT_REGION",
+                "value": "us-east-1"
+            },
+            {
+                "name": "AWS_ACCOUNT_ID",
+                "value": "639733269501"
+            },
+            {
+                "name": "IMAGE_REPO_NAME",
+                "value": "sj-docker-push-639733269501"
+            },
+            {
+                "name": "IMAGE_TAG",
+                "value": "sj-docker-push"
+            }
+        ],
+        "privilegedMode": true,
+        "imagePullCredentialsType": "CODEBUILD"
+    },
+    "serviceRole": "sj-docker-push-codebuild"
+}
